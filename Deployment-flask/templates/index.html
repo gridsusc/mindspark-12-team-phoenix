@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+</head>
+
+<body>
+ <div class="login">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+<!--    	<input type="text" name="experience" placeholder="Experience" required="required" />-->
+<!--        <input type="text" name="test_score" placeholder="Test Score" required="required" />-->
+<!--		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />-->
+
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h2>Get Accident Points</h2>
+                            <p>Fill in the data below.</p>
+                            <form class="requires-validation" novalidate>
+                                <div class="col-md-12">
+                                   <input class="form-control" type="text" name="city" placeholder="City" required>
+<!--                                   <div class="valid-feedback">Username field is valid!</div>-->
+<!--                                   <div class="invalid-feedback">Username field cannot be blank!</div>-->
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="street" placeholder="Street Name" required>
+<!--                                     <div class="valid-feedback">Email field is valid!</div>-->
+<!--                                     <div class="invalid-feedback">Email field cannot be blank!</div>-->
+                                </div>
+
+                               <div class="col-md-12">
+                                   <label for="start">Trip date:</label><label></label>
+<!--                                           <input class="form-control" type="date" id="start" name="trip-start" value="2022-04-16" min="2022-04-16" max="2022-04-21">-->
+                                   <input type="datetime-local" id="meeting-time" name="meeting-time" value="2022-04-16T15:30:00"  min="2022-04-16T16:00:00" max="2022-04-21T11:30:00">
+                               </div>
+
+                                <div class="col-md-12"></div>
+                                <br>
+                                <div class="form-button mt-3" class="col-md-12">
+<!--                                    <input type="submit" class="btn btn-primary", value='Check Accident' >-->
+                                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict Accidents</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{ prediction_text }}
+                </div>
+            </div>
+        </div>
+   <br>
+    </form>
+ </div>
+
+
+</body>
+</html>
